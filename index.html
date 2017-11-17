@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/script.js"></script>
+
+</head>
+<body onload="startGame()">
+
+	<img class="sp" id="Pause" src="img/pause.png" onclick="pr()">
+
+
+<div id="GamePad"> 
+	<img class="gamePad" id="UP" src="img/gamepadU.png" onmousedown="moveUp()">
+	<img class="gamePad" id="DOWN" src="img/gamepadD.png" onmousedown="moveDown()">
+	<img class="gamePad" id="LEFT" src="img/gamepadL.png" onmousedown="moveLeft()">
+	<img class="gamePad" id="RIGHT" src="img/gamepadR.png" onmousedown="moveRight()">
+</div>
+<p id="time">0:00</p>
+
+</body>
+</html>
