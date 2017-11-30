@@ -17,8 +17,9 @@ function startGame(){
 	document.getElementById("Pause").src = "img/pause.png";
 	document.getElementById("GamePad").style.top = sHeight-150+"px";
 	document.getElementById("GamePad").style.left = sWidth/2 - 40+"px";
+	
 	alert("Start game.");
-	GamePiece = new GameObject("red", sWidth/2, sHeight/2);
+	GamePiece = new GameObject(document.getElementById("prota"), sWidth/2, sHeight/2);
 	ball.push(new object(15,'purple'));	
 	balls = setInterval(addBall,5000);
 	time = setInterval(showTime,1000);
@@ -77,23 +78,23 @@ function showTime(){
 	document.getElementById("time").innerHTML = lTime;
 }
 
-function GameObject(color, x, y,){
-	this.width = 30;
-    this.height = 30;   
+function GameObject(img, x, y,){
+	this.width = 40;
+    this.height = 80;   
     this.x = x;
     this.y = y;
 	this.speedX = 0;
     this.speedY = 0.8;
-	this.color = color;
-	//this.img = img;
+	//this.color = color;
+	this.img = img;
     this.update = function() {
         ctx = myGameArea.context;
         ctx.fillStyle = this.color;
-		//ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+		ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+		//ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 	this.newPos = function(){
-		if(this.x < (sWidth-30) && this.x > 0 && this.y > 0 && this.y < (sHeight-30)){
+		if(this.x < (sWidth-this.width) && this.x > 0 && this.y > 0 && this.y < (sHeight-this.height)){
 			this.x += this.speedX;
 			this.y += this.speedY;
 			
@@ -103,12 +104,12 @@ function GameObject(color, x, y,){
 		}else if(this.y <=0){
 			this.speedY = 0;
 			this.y = 1;
-		}else if(this.x >= sWidth-30){
+		}else if(this.x >= sWidth-this.width){
 			this.speedX = 0;
-			this.x = sWidth - 31;
-		}else if(this.y >= sHeight-30){
+			this.x = sWidth - (this.width + 1);
+		}else if(this.y >= sHeight-this.height){
 			this.speedY = 0;
-			this.y = sHeight - 31
+			this.y = sHeight - (this.height + 1);
 			//this.img = ;
 		}
 	}
