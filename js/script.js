@@ -3,8 +3,8 @@ var GamePiece;
 var ball = [];
 var ball2 = [];
 var ball3 = [];
-var sHeight;
-var sWidth;
+var sHeight = 500;
+var sWidth = 500;
 var nSecond = 00;
 var nMinuts = 00;
 var lTime;
@@ -14,10 +14,7 @@ var interval;
 var pause = true;
 
 function startGame(){
-	window.onscroll;
 	document.getElementById("Pause").src = "img/pause.png";
-	sWidth = screen.width;
-	sHeight = screen.height;
 	document.getElementById("GamePad").style.top = sHeight-150+"px";
 	document.getElementById("GamePad").style.left = sWidth/2 - 40+"px";
 	alert("Start game.");
@@ -60,10 +57,6 @@ function gamePad(){
     ctx.drawImage(img,10,10);
 }
 
-window.onscroll = function () {
-     window.scrollTo(0,0);
-}
-
 function showTime(){
 	if(nSecond < 9){
 		nSecond++;
@@ -90,28 +83,33 @@ function GameObject(color, x, y,){
     this.x = x;
     this.y = y;
 	this.speedX = 0;
-    this.speedY = 0;
+    this.speedY = 0.8;
+	this.color = color;
+	//this.img = img;
     this.update = function() {
         ctx = myGameArea.context;
-        ctx.fillStyle = color;
+        ctx.fillStyle = this.color;
+		//ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 	this.newPos = function(){
-		if(this.x < (screen.width-30) && this.x > 0 && this.y > 0 && this.y < (screen.height-30)){
+		if(this.x < (sWidth-30) && this.x > 0 && this.y > 0 && this.y < (sHeight-30)){
 			this.x += this.speedX;
 			this.y += this.speedY;
+			
 		}else if(this.x <=0){
 			this.speedX = 0;
 			this.x = 1;
 		}else if(this.y <=0){
 			this.speedY = 0;
 			this.y = 1;
-		}else if(this.x >= screen.width-30){
+		}else if(this.x >= sWidth-30){
 			this.speedX = 0;
-			this.x = screen.width - 31;
-		}else if(this.y >= screen.height-30){
+			this.x = sWidth - 31;
+		}else if(this.y >= sHeight-30){
 			this.speedY = 0;
-			this.y = screen.height - 31
+			this.y = sHeight - 31
+			//this.img = ;
 		}
 	}
 	this.gameOver = function(ball){
@@ -173,8 +171,6 @@ var myGameArea = {
 		ball = [];
 		ball2 = [];
 		ball3 = [];
-		sHeight;
-		sWidth;
 		nSecond = 00;
 		nMinuts = 00;
 		lTime;
@@ -188,20 +184,20 @@ var myGameArea = {
 
 function object(r,color){
 	this.r = r;
-	var randomPlace =Math.floor(Math.random() * 4);	
+	var randomPlace = Math.floor(Math.random() * 4);	
 	if(randomPlace == 0){
 		this.x = Math.floor(Math.random() * (myGameArea.canvas.width-10))+10;
 		this.y = 1;
 	}else if(randomPlace == 1){
 		this.x = Math.floor(Math.random() * (myGameArea.canvas.width-10))+10;
-		this.y = screen.height - 1;
+		this.y = sHeight - 1;
 
 	}else if(randomPlace == 2){
 		this.y = Math.floor(Math.random() * (myGameArea.canvas.height-10))+10;
 		this.x = 1;
 	}else if(randomPlace == 3){
 		this.y = Math.floor(Math.random() * (myGameArea.canvas.height-10))+10;
-		this.x = screen.width - 1;
+		this.x = sWidth - 1;
 	} 		
 	this.speedX = Math.floor(Math.random() * 3) + 1;
 	this.speedY = Math.floor(Math.random() * 3) + 1;
@@ -215,13 +211,13 @@ function object(r,color){
         ctx.fill();
     }
 	this.newPos = function(){
-		if(this.x < (screen.width - this.r) && this.y < (screen.height - this.r) && this.x > 0 && this.y > 0){
+		if(this.x < (sWidth - this.r) && this.y < (sHeight - this.r) && this.x > 0 && this.y > 0){
 			this.x += this.speedX;
 			this.y += this.speedY;
 		}else{
-			if(this.y <= 0 || this.y >= screen.height){
+			if(this.y <= 0 || this.y >= sHeight){
 				this.speedY = -1*this.speedY;
-			}else if(this.x <= 0 || this.x >= screen.width){
+			}else if(this.x <= 0 || this.x >= sWidth){
 				this.speedX = -1*this.speedX;
 			}
 			this.x += this.speedX;
@@ -333,20 +329,25 @@ function updateGameArea() {
 
 function moveUp(){
 	GamePiece.speedX = 0;
-	GamePiece.speedY = -1;
+	GamePiece.speedY = -2;
 }
 
-function moveDown(){
-	GamePiece.speedX = 0;
-	GamePiece.speedY = 1;
-}
+// function moveDown(){
+	// GamePiece.speedX = 0;
+	// GamePiece.speedY = 2;
+// }
 
 function moveRight(){
-	GamePiece.speedX = 1;
+	GamePiece.speedX = 2;
 	GamePiece.speedY = 0;
 }
 
 function moveLeft(){
-	GamePiece.speedX = -1;
+	GamePiece.speedX = -2;
 	GamePiece.speedY = 0;
+}
+
+function moveClear(){
+	GamePiece.speedX = 0;
+	GamePiece.speedY = 0.8;
 }

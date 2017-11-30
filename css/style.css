@@ -56,3 +56,7 @@ canvas {
 	top: 16px;
 	left: 40px;
 }
+
+canvas{
+	background-image: url('../img/FONDO_JUEGOv1.gif')
+}

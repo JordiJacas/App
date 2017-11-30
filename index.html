@@ -12,10 +12,10 @@
 
 
 <div id="GamePad"> 
-	<img class="gamePad" id="UP" src="img/gamepadU.png" onmousedown="moveUp()">
-	<img class="gamePad" id="DOWN" src="img/gamepadD.png" onmousedown="moveDown()">
-	<img class="gamePad" id="LEFT" src="img/gamepadL.png" onmousedown="moveLeft()">
-	<img class="gamePad" id="RIGHT" src="img/gamepadR.png" onmousedown="moveRight()">
+	<img class="gamePad" id="UP" src="img/gamepadU.png" onmousedown="moveUp()" onmouseup="moveClear()">
+	<img class="gamePad" id="DOWN" src="img/gamepadD.png" onmousedown="moveDown()" onmouseup="moveClear()">
+	<img class="gamePad" id="LEFT" src="img/gamepadL.png" onmousedown="moveLeft()" onmouseup="moveClear()">
+	<img class="gamePad" id="RIGHT" src="img/gamepadR.png" onmousedown="moveRight()" onmouseup="moveClear()">
 </div>
 <p id="time">0:00</p>
 
