@@ -110,7 +110,7 @@ function GameObject(img, x, y,){
 		}else if(this.y >= sHeight-this.height){
 			this.speedY = 0;
 			this.y = sHeight - (this.height + 1);
-			//this.img = ;
+			this.img = document.getElementById("protaSuelo");
 		}
 	}
 	this.gameOver = function(ball){
@@ -331,6 +331,7 @@ function updateGameArea() {
 function moveUp(){
 	GamePiece.speedX = 0;
 	GamePiece.speedY = -2;
+	GamePiece.img = document.getElementById("prota");
 }
 
 // function moveDown(){

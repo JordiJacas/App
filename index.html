@@ -8,14 +8,15 @@
 </head>
 <body onload="startGame()">
 	<img id="prota" src="img/prota.gif" style="display:none">
+	<img id="protaSuelo" src="img/protaSuelo.gif" style="display:none">
 	<img class="sp" id="Pause" src="img/pause.png" onclick="pr()">
 
 
 <div id="GamePad"> 
-	<img class="gamePad" id="UP" src="img/gamepadU.png" onmousedown="moveUp()" onmouseup="moveClear()">
-	<img class="gamePad" id="DOWN" src="img/gamepadD.png" onmousedown="moveDown()" onmouseup="moveClear()">
-	<img class="gamePad" id="LEFT" src="img/gamepadL.png" onmousedown="moveLeft()" onmouseup="moveClear()">
-	<img class="gamePad" id="RIGHT" src="img/gamepadR.png" onmousedown="moveRight()" onmouseup="moveClear()">
+	<img class="gamePad" id="UP" src="img/gamepadU.png" onmousedown="moveUp()" onmouseup="moveClear()" ontouchmove="moveUp()">
+	<img class="gamePad" id="DOWN" src="img/gamepadD.png" onmousedown="moveDown()" onmouseup="moveClear()" ontouchmove="moveDown()">
+	<img class="gamePad" id="LEFT" src="img/gamepadL.png" onmousedown="moveLeft()" onmouseup="moveClear()" ontouchmove="moveLeft()">
+	<img class="gamePad" id="RIGHT" src="img/gamepadR.png" onmousedown="moveRight()" onmouseup="moveClear()" ontouchmove="moveRight()">
 </div>
 <p id="time">0:00</p>
 
